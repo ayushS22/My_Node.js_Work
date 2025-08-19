@@ -167,7 +167,7 @@
 
 
 
-
+//Calculator API's with node js
 // Import the built-in http package.
 const http = require('http')
 const fs = require("fs")
@@ -204,9 +204,7 @@ const server = http.createServer((request,response)=>{
                 response.statusCode = 404
                     response.end("Event not found")  
                     break
-            
-                
-
+        
            }
         })
     }
