@@ -203,17 +203,28 @@ const server = http.createServer((request, response) => {
                     response.end(`Value of Event ${dataOfBody.event} is ${dataOfBody.num1 + dataOfBody.num2}`)
                     break
                 case 'subtract':
-                    // If event = subtract → perform subtraction
+                    if(dataOfBody.num1 < dataOfBody.num2){
+                        response.end("Value of num1 cannot be smaller than num2")
+                    }else{
+                       // If event = subtract → perform subtraction
                     response.end(`Value of Event ${dataOfBody.event} is ${dataOfBody.num1 - dataOfBody.num2}`)
                     break
+                    }
+                    
                 case 'multiply':
                     // If event = multiply → perform multiplication
                     response.end(`Value of Event ${dataOfBody.event} is ${dataOfBody.num1 * dataOfBody.num2}`)
                     break
                 case 'divide':
-                    // If event = divide → perform division
+                    if(dataOfBody.num2 === 0){
+                        response.end("For event divide num2 cannot be 0")
+                    }
+                    else{
+                       // If event = divide → perform division
                     response.end(`Value of Event ${dataOfBody.event} is ${dataOfBody.num1 / dataOfBody.num2}`)
                     break
+                    }
+                   
                 default:
                     // If event is not one of the above → return 404 (not found)
                     response.statusCode = 404
